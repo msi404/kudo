@@ -31,20 +31,9 @@ const run = async () => {
 				{ stdio: "inherit" }
 			);
 			process.chdir(projectPath);
-			const appDir = path.join(projectPath, "app");
-			const sharedDir = path.join(appDir, "_shared");
-			const stylesDir = path.join(sharedDir, "styles");
-			await fs.ensureDir(stylesDir);
-			const oldCssPath = path.join(appDir, "globals.css");
-			const newCssPath = path.join(stylesDir, "globals.css");
-
-			if (await fs.pathExists(oldCssPath)) {
-				await fs.move(oldCssPath, newCssPath, { overwrite: true });
-			}
-			const publicDir = path.join(projectPath, "public");
-			await fs.emptyDir(publicDir);
 			console.log(chalk.cyan("🔁 Switching to pnpm..."));
 			await fs.remove("package-lock.json");
+			await fs.remove("README.md");
 			await fs.remove("node_modules");
 			await execa("pnpm", ["install"], { stdio: "inherit" });
 			console.log(chalk.cyan("🎨 Installing Prettier..."));
@@ -64,6 +53,11 @@ const run = async () => {
 					"eslint-config-prettier",
 					"eslint-plugin-prettier",
 					"@typescript-eslint/eslint-plugin",
+					"eslint-plugin-simple-import-sort",
+					"stylelint",
+					"stylelint-config-standard",
+					"stylelint-config-standard-scss",
+					"stylelint-config-tailwindcss"
 				],
 				{
 					stdio: "inherit",
@@ -73,7 +67,9 @@ const run = async () => {
 			// Delete original ESLint and Commitlint configs from Next.js starter
 			await Promise.all([
 				fs.remove(path.join(projectPath, "eslint.config.mjs")),
-			]);
+			] );
+			
+			await fs.remove(path.join(projectPath, "app"));
 
 			await fs.copy(templateDir, projectPath, { overwrite: true });
 			console.log(chalk.cyan("📦 Setting up Husky..."));
@@ -88,7 +84,16 @@ const run = async () => {
 				mode: 0o755,
 			});
 
-			console.log(chalk.green("✅ Husky hooks configured!"));
+			console.log( chalk.green( "✅ Husky hooks configured!" ) );
+			console.log(chalk.cyan("🖍️ Checking css..."));
+			await execa(
+				"npx",
+				["stylelint", "**/*.css", "--fix"],
+				{
+					stdio: "inherit",
+				}
+			);
+			console.log(chalk.green("🥋 You're ready for the black belt."));
 		});
 	program.parse();
 };

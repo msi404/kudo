@@ -1,0 +1,50 @@
+{
+  "id": "kudo-app",
+  "name": "Kudo App",
+  "short_name": "Kudo",
+  "icons": [
+      {
+        "src": "icons/icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any"
+      },
+      {
+        "src": "icons/maskable_icon_x192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "maskable"
+      },
+      {
+        "src": "icons/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any"
+      },
+      {
+        "src": "icons/maskable_icon_x512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "maskable"
+      }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-1.png",
+      "form_factor": "wide",
+      "type": "image/png",
+      "size": "1280x720"
+    },
+    {
+      "src": "/screenshot-2.png",
+      "form_factor": "wide",
+      "type": "image/png",
+      "size": "1280x720"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "orientation": "portrait"
+}
