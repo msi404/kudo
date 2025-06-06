@@ -18,7 +18,7 @@ const APP_DEFAULT_TITLE = 'Kudo App'
 const APP_TITLE_TEMPLATE = '%s - Kudo'
 const APP_DESCRIPTION = `Kudo is a zero-config CLI tool to kickstart your Next.js apps
  — but with a twist of discipline. It comes pre-configured with Husky, Commitlint,
- Prettier, and [VsCode](https://code.visualstudio.com/) recommended settings
+ Prettier, and VsCode recommended settings
   to help you build scalable and clean applications with a strong development workflow —
 	right from the first commit`
 
