@@ -8,6 +8,7 @@
     "create-kudo-app": "./dist/index.js"
   },
   "scripts": {
+    "version": "standard-version",
     "build": "tsc",
     "dev": "ts-node src/index.ts"
   },
@@ -16,6 +17,7 @@
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^22.15.27",
+    "standard-version": "^9.5.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
