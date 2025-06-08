@@ -63,6 +63,11 @@ const run = async () => {
 					stdio: "inherit",
 				}
 			);
+			await execa(
+				"pnpm",
+				["add", "@kudojs/toolbox"],
+				{ stdio: "inherit" }
+			);
 			console.log(chalk.cyan("⚙️ Writing configuration files..."));
 			// Delete original ESLint and Commitlint configs from Next.js starter
 			await Promise.all([
