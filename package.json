@@ -7,6 +7,17 @@
   "bin": {
     "create-kudo-app": "./dist/index.js"
   },
+  "files": [
+    "src",
+    "templates"
+  ],
+  "keywords": [
+    "nextjs",
+    "cli",
+    "scaffold",
+    "husky",
+    "commitlint"
+  ],
   "scripts": {
     "release": "standard-version",
     "build": "tsc",
