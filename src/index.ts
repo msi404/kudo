@@ -35,7 +35,18 @@ const run = async () => {
 			await fs.remove("package-lock.json");
 			await fs.remove("README.md");
 			await fs.remove("node_modules");
-			await execa("pnpm", ["install"], { stdio: "inherit" });
+			await execa( "pnpm", [ "install" ], { stdio: "inherit" } );
+			// Add "generate-api" script to package.json
+const packageJsonPath = path.join(projectPath, "package.json");
+const packageJson = await fs.readJson(packageJsonPath);
+
+packageJson.scripts = packageJson.scripts || {};
+packageJson.scripts["generate-api"] = "npx @rtk-query/codegen-openapi ./app/_shared/config/openapi-config.cts";
+
+await fs.writeJson(packageJsonPath, packageJson, { spaces: 2 });
+
+console.log(chalk.cyan("📝 Added 'generate-api' script to package.json"));
+
 			console.log(chalk.cyan("🎨 Installing Prettier..."));
 			await execa("pnpm", ["add", "-D", "prettier"], {
 				stdio: "inherit",
@@ -57,7 +68,10 @@ const run = async () => {
 					"stylelint",
 					"stylelint-config-standard",
 					"stylelint-config-standard-scss",
-					"stylelint-config-tailwindcss"
+					"stylelint-config-tailwindcss",
+					"@rtk-query/codegen-openapi",
+					"ts-node",
+					"esbuild-runner"
 				],
 				{
 					stdio: "inherit",
@@ -65,7 +79,7 @@ const run = async () => {
 			);
 			await execa(
 				"pnpm",
-				["add", "@kudojs/toolbox"],
+				["add", "@kudojs/toolbox", "react-redux", "motion", "@reduxjs/toolkit", "@casl/react", "@casl/ability"],
 				{ stdio: "inherit" }
 			);
 			console.log(chalk.cyan("⚙️ Writing configuration files..."));
