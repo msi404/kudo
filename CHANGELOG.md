@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/msi404/kudo-app/compare/v1.5.0...v1.6.0) (2025-06-08)
+
+
+### Features
+
+* added redux and casl ([79bae4c](https://github.com/msi404/kudo-app/commit/79bae4c6d084a4320f82fac663d088f9224e36e7))
+
 ## [1.5.0](https://github.com/msi404/kudo-app/compare/v1.4.0...v1.5.0) (2025-06-08)
 
 
