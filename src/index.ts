@@ -20,7 +20,7 @@ const run = async () => {
 			"Scaffold a Next.js app with prettier, husky, commitlint, and pnpm"
 		)
 		.argument("<project-name>", "Project name")
-		.action(async projectName => {
+		.action(async (projectName: any) => {
 			const projectPath = path.resolve(process.cwd(), projectName);
 			console.log(
 				chalk.cyan(`🚀 Creating Next.js app: ${projectName}...`)
@@ -63,6 +63,7 @@ console.log(chalk.cyan("📝 Added 'generate-api' script to package.json"));
 					"@commitlint/types",
 					"eslint-config-prettier",
 					"eslint-plugin-prettier",
+					"eslint-plugin-no-relative-import-paths",
 					"@typescript-eslint/eslint-plugin",
 					"eslint-plugin-simple-import-sort",
 					"stylelint",
