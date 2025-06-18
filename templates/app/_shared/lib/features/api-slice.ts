@@ -10,6 +10,8 @@ export const api = createApi({
 	baseQuery: fetchBaseQuery({
 		baseUrl: baseApi,
 		prepareHeaders: (headers, { getState }) => {
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			//@ts-expect-error
 			const token = (getState() as RootState).auth.token
 			if (token) {
 				headers.set('Authorization', `Bearer ${token}`)
